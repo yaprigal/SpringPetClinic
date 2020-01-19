@@ -8,5 +8,10 @@ Jenkins machine with default plugins installed + Docker installed on the machine
 1. Login to Jenkins, create a new item based Multibranch Pipeline.
 2. Select as Branch Sources -> GitHub
 3. Under Repository HTTPS URL, add this github repo url - https://github.com/yaprigal/SpringPetClinic.git
+4. (Optional) In case you would like to push resulted docker image to docker hub - add Docker Hub credential under Credential -> Global Credential, set the new credential ID as: dockerhub
 
 ## The Jenkinsfile
+The Jenkins pipeline based on docker agent from docker image: <b>yaronpr/mavenwithdocker:3.6.1-alpine</b><br>
+This image is based on <b>maven:3.6.1-alpine</b> image just with docker client install on it.<br>
+Why we need this new docker image ? It's allow us to run docker commands during the Jenkins CI process.<br>
+
