@@ -1,7 +1,6 @@
 pipeline {    
     environment {
         registry = "yaronpr/yaronpetclinic"
-        registryCredential = 'dockerhub'    
     }
     agent { 
         docker { 
@@ -59,7 +58,7 @@ pipeline {
         stage('Docker Push') {                         
             steps {                       
                 echo 'docker push start'
-                withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
+                withDockerRegistry([ credentialsId: "$registryCredential", url: "" ]) {
                     sh 'docker push $registry:$BUILD_NUMBER'
                     sh 'docker push $registry:latest'
                 }
