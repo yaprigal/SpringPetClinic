@@ -52,7 +52,7 @@ pipeline {
         stage('Docker Build') {                         
             steps {       
                 echo 'download Dockerfile'
-                sh 'curl -L "https://raw.githubusercontent.com/yaprigal/petclinic/master/Dockerfile" -o Dockerfile'                 
+                sh 'curl -L "https://raw.githubusercontent.com/yaprigal/SpringPetClinic/master/Dockerfile" -o Dockerfile'                 
                 echo 'docker builld start'
                 script {        
                     myImage = docker.build  registry + ":${env.BUILD_ID}"
