@@ -32,10 +32,10 @@ Downloading the Dockerfile (from this repo) and executing the docker build comma
 Pushing the resulted Docker image to Docker Hub (with small modification, can be also to other Docker registries)
 
 ## The Dockerfile
-The base image of the Docker image will openjdk:8-jdk-alpine (Docker size consideration)<br>
-We are making sure that we are not running the container with root privileges<br>
-We allowing dynamically to change the port that the application will be listening to by passing APP_PORT during docker build or APP_ENV_PORT during execution of docker run command
-We are also trying to avoid JVM delays by setting java.security.egd=file:/dev/./urandom" 
+1. The base image of the Docker image will openjdk:8-jdk-alpine (Docker size consideration)<br>
+2. We are making sure that we are not running the container with root privileges<br>
+3. We allowing dynamically to change the port that the application will be listening to by passing APP_PORT during docker build or APP_ENV_PORT during execution of docker run command
+4. We are also trying to avoid JVM delays by setting java.security.egd=file:/dev/./urandom" 
 
 
 
