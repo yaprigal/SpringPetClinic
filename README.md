@@ -11,8 +11,8 @@ Jenkins machine with default plugins installed + Docker installed on the machine
 4. (Optional) In case you would like to push resulted docker image to docker hub - add Docker Hub credential under Credential -> Global Credential, set the new credential ID as: dockerhub
 
 ## The Jenkinsfile
-The Jenkins pipeline based on docker agent from docker image: <a href="https://hub.docker.com/r/yaronpr/mavenwithdocker"><b>yaronpr/mavenwithdocker:3.6.1-alpine</b></a><br>
-This image is based on <a href="https://hub.docker.com/_/maven?tab=tags&page=1&name=3.6.1-alpine"><b>maven:3.6.1-alpine</b></a>image just with docker client install on it<br>
+The Jenkins pipeline based on docker agent from docker image: <a href="https://hub.docker.com/r/yaronpr/mavenwithdocker">yaronpr/mavenwithdocker:3.6.1-alpine</a><br>
+This image is based on <a href="https://hub.docker.com/_/maven?tab=tags&page=1&name=3.6.1-alpine">maven:3.6.1-alpine</a>image just with docker client install on it<br>
 Why do we need this new docker image ? It's allow us to run docker commands during the Jenkins CI process<br>
 How can we connect to docker engine from this image ? By adding the follwing mount: args '-v /var/run/docker.sock:/var/run/docker.sock'
 <br>
