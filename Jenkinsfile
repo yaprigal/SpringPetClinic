@@ -1,6 +1,7 @@
 pipeline {    
     environment {
         registry = "yaronpr/yaronpetclinic"
+        registryCredential = "dockerhub"
     }
     agent { 
         docker { 
