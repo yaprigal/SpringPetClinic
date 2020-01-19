@@ -8,7 +8,7 @@ Jenkins machine with default plugins installed + Docker installed on the machine
 1. Login to Jenkins, create a new item based Multibranch Pipeline
 2. Select as Branch Sources -> GitHub
 3. Under Repository HTTPS URL, add this github repo url - https://github.com/yaprigal/SpringPetClinic.git
-4. (Optional) In case you would like to push resulted docker image to docker hub - add Docker Hub credential under Credential -> Global Credential, set the new credential ID as: dockerhub
+4. Add Docker Hub credential under Credential -> Global Credential, set the new credential ID as: dockerhub
 
 ## The Jenkinsfile
 The Jenkins pipeline based on docker agent from docker image: <a href="https://hub.docker.com/r/yaronpr/mavenwithdocker">yaronpr/mavenwithdocker:3.6.1-alpine</a><br>
@@ -28,7 +28,7 @@ Execute the tests, making sure the step will fail in case of failure in one of t
 In order for our docker image to be layer efficiency(3rd parties will be on seperate docker layer)- we are extracting the resulted JAR 
 #### 6th Step (Docker Build)
 Downloading the Dockerfile (from this repo) and executing the docker build command using the Jenkins plugin for Docker<br>
-#### (Optional) 7th Step (Docker Push)
+#### 7th Step (Docker Push)
 Pushing the resulted Docker image to Docker Hub (with small modification, can be also to other Docker registries)
 
 ## The Dockerfile
