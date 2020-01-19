@@ -1,8 +1,7 @@
 pipeline {    
     environment {
         registry = "yaronpr/yaronpetclinic"
-        registryCredential = 'dockerhub'
-        myImage = ''
+        registryCredential = 'dockerhub'    
     }
     agent { 
         docker { 
@@ -54,20 +53,21 @@ pipeline {
                 echo 'download Dockerfile'
                 sh 'curl -L "https://raw.githubusercontent.com/yaprigal/SpringPetClinic/master/Dockerfile" -o Dockerfile'                 
                 echo 'docker builld start'
-                script {        
-                    myImage = docker.build  registry + ":${env.BUILD_ID}"
-                }
+                sh 'docker build -t $registry:$BUILD_NUMBER .'                
             }
         }        
         stage('Docker Push') {                         
             steps {                       
                 echo 'docker push start'
-                script {        
-                    docker.withRegistry( '', registryCredential ) {
-                        myImage.push()
-                        myImage.push('latest')
-                    }    
+                withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
+                    sh 'docker push $registry:$BUILD_NUMBER'
+                    sh 'docker push $registry:latest'
                 }
+            }
+        }
+        stage('Remove Unused Docker Image') {
+            steps {    
+                sh 'docker rmi $registry:$BUILD_NUMBER'
             }
         }
     }
