@@ -27,9 +27,11 @@ Execute the tests, making sure the step will fail in case of failure in one of t
 #### 5th Step (Extract Jar)
 In order for our docker image to be layer efficiency(3rd parties will be on seperate docker layer)- we are extracting the resulted JAR 
 #### 6th Step (Docker Build)
-Downloading the Dockerfile (from this repo) and executing the docker build command using the Jenkins plugin for Docker<br>
+Downloading the Dockerfile (from this repo) and executing the docker build command<br>
 #### 7th Step (Docker Push)
 Pushing the resulted Docker image to Docker Hub (with small modification, can be also to other Docker registries)
+#### 8th Step (Remove Unused Docker Image)
+Removing the unused docker image from the build machine in order to save space
 
 ## The Dockerfile
 1. The base image of the Docker image will openjdk:8-jdk-alpine (Docker size consideration)<br>
