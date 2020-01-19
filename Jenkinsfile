@@ -1,9 +1,10 @@
 pipeline {
-    environment {
+    //Unmark below if you would like to push the resulted docker image
+    /*environment {
         registry = "yaronpr/yaronpetclinic"
         registryCredential = 'dockerhub'
         myImage = ''
-    }
+    }*/
     agent { 
         docker { 
             image 'yaronpr/mavenwithdocker:3.6.1-alpine'
@@ -59,7 +60,8 @@ pipeline {
                 }
             }
         }
-        stage('Docker Push') {                         
+        //Unmark below if you would like to push the resulted docker image
+        /* stage('Docker Push') {                         
             steps {                       
                 echo 'docker push start'
                 script {        
@@ -69,6 +71,6 @@ pipeline {
                     }    
                 }
             }
-        }
+        }*/
     }
 }
