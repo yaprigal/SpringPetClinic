@@ -16,19 +16,19 @@ This image is based on <b>maven:3.6.1-alpine</b> image just with docker client i
 Why do we need this new docker image ? It's allow us to run docker commands during the Jenkins CI process<br>
 How can we connect to docker engine from this image ? By adding the follwing mount: args '-v /var/run/docker.sock:/var/run/docker.sock'
 <br>
-### 1st Step (Download JCenter Settings)
+#### 1st Step (Download JCenter Settings)
 Download the JCenter configuration file - this setting will be used to resolve dependencies from Bintray JCenter<br>
-### 2nd Step (Clone Source)
+#### 2nd Step (Clone Source)
 Clone spring-petclinic project
-### 3rd Step (Compile Source)
+#### 3rd Step (Compile Source)
 Execute mvn command by skipping the tests and passing the JCenter settings file
-### 4th Step (Run Tests)
+#### 4th Step (Run Tests)
 Execute the tests, making sure the step will fail in case of failure in one of the tests and passing the JCenter settings file<br>
-### 5th Step (Extract Jar)
+#### 5th Step (Extract Jar)
 In order for our docker image to be layer efficiency(3rd parties will be on seperate docker layer)- we are extracting the resulted JAR 
-### 6th Step (Docker Build)
+#### 6th Step (Docker Build)
 Downloading the Dockerfile (from this repo) and executing the docker build command using the Jenkins plugin for Docker<br>
-### (Optional) 7th Step (Docker Push)
+#### (Optional) 7th Step (Docker Push)
 Pushing the resulted Docker image to Docker Hub (with small modification, can be also to other Docker registries)
 
 ## The Dockerfile
